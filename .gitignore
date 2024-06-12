@@ -1,0 +1,93 @@
+# Visual Studio
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+*.symbols.nupkg
+*.symbols.snupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+
+# Rider directories
+.idea/
+.idea_modules/
+
+# Legacy artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# SQLite database files
+*.db
+*.db3
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# JetBrains Rider
+.idea/
+.idea_modules/
+.idea_versions.txt
+
+# User-specific files
+*.rsuser
+*.rsuser-c
+*.sln.docstates
+*.user
+*.userosscache
+*.suo
+
+# Code coverage results
+*.coverage
+*.coveragexml
+_Reports/
+
+# Update package lock file
+package-lock.json
+
+# DotNet minikube
+.Dockerfile
+
+# JetBrains Rider
+.idea/
+.idea_modules/
+
+# Logs
+*.log
+
+# NPM Modules
+node_modules/
