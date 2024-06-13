@@ -18,9 +18,14 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet("produtos")]
-    public ActionResult<IEnumerable<Categoria>> GetCategoriaProdutos()
+    public async Task<ActionResult<IEnumerable<Categoria>>> GetCategoriaProdutos()
     {
-        var response = _context?.Categorias?.Include(p => p.Produtos)?.AsNoTracking()?.ToList();
+        if (_context?.Categorias is null)
+        {
+            return NotFound("Categorias não encontradas");
+        }
+
+        var response = await _context.Categorias.Include(p => p.Produtos).AsNoTracking().ToListAsync();
 
         if (response is null)
         {
@@ -31,17 +36,22 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Categoria>> GetCategorias()
+    public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
     {
         try
         {
-            var response = _context?.Categorias?.AsNoTracking()?.ToList();
+            if (_context?.Categorias is null)
+            {
+                return NotFound("Categorias não encontradas");
+            }
 
-        if (response is null)
-        {
-            return NotFound("Categorias não encontradas");
-        }
-        return response;
+            var response = await _context.Categorias.AsNoTracking().ToListAsync();
+
+            if (response is null)
+            {
+                return NotFound("Categorias não encontradas");
+            }
+            return response;
         }
         catch (Exception)
         {
@@ -63,35 +73,45 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult PostCategoria(Categoria data)
+    public async Task<ActionResult> PostCategoria(Categoria data)
     {
         if (data is null)
         {
             return BadRequest();
         }
 
-        _context?.Categorias?.Add(data);
-        _context?.SaveChanges();
+        if (_context is null || _context?.Categorias is null)
+        {
+            return NotFound("Categorias não encontradas");
+        }
+
+        _context.Categorias.Add(data);
+        await _context.SaveChangesAsync();
 
         return new CreatedAtRouteResult("ObterCategoria", new { id = data.CategoriaId }, data);
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult PutCategoria(int id, Categoria data)
+    public async Task<ActionResult> PutCategoria(int id, Categoria data)
     {
         if (id != data.CategoriaId)
         {
             return BadRequest();
         }
 
+         if (_context is null || _context?.Categorias is null)
+        {
+            return NotFound("Categorias não encontradas");
+        }
+
         _context.Entry(data).State = EntityState.Modified;
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
 
         return Ok(data);
     }
 
     [HttpDelete("{id:int}")]
-    public ActionResult DeleteCategoria(int id)
+    public async Task<ActionResult> DeleteCategoria(int id)
     {
         var categoria = _context?.Categorias?.FirstOrDefault(p => p.CategoriaId == id);
 
@@ -100,8 +120,13 @@ public class CategoriaController : ControllerBase
             return NotFound("Categoria não encontrada");
         }
 
-        _context?.Categorias?.Remove(categoria);
-        _context?.SaveChanges();
+        if (_context is null || _context?.Categorias is null)
+        {
+            return NotFound("Categorias não encontradas");
+        }
+
+        _context.Categorias.Remove(categoria);
+        await _context.SaveChangesAsync();
 
         return Ok(categoria);
     }
