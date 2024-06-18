@@ -1,6 +1,7 @@
 using APICatalogo.Context;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 
 namespace APICatalogo.Controllers.ProdutosController;
@@ -39,6 +40,8 @@ public class ProdutosController : ControllerBase
    }
 
    [HttpGet("{id:int}", Name = "ObterProduto")]
+   // Definindo um parametro obrigatório
+   // public async Task<ActionResult<Produto>> GetProdutoById(int id , [BindRequired] string nome)
    public async Task<ActionResult<Produto>> GetProdutoById(int id)
    {
       if (_context is null || _context?.Produtos is null)
