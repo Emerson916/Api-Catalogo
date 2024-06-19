@@ -32,7 +32,7 @@ public class CustomerLogger : ILogger
 
     private void EscreverTextoNoArquivo(string mensagem)
     {
-        string caminhoArquivoLog = @"C:\Users\estagiario\Projetos\pessoal\ApiCatalogo_Log.txt";
+        string caminhoArquivoLog = @"C:\Users\estagiario\Projetos\pessoal\APICatalogo\log\ApiCatalogo_Log.txt";
         using (StreamWriter streamWriter = new StreamWriter(caminhoArquivoLog, true))
         {
             try

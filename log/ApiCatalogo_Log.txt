@@ -1,0 +1,24 @@
+19/06/2024 16:41:48 : Information: 14 - Now listening on: http://localhost:5298
+19/06/2024 16:41:48 : Information: 0 - Application started. Press Ctrl+C to shut down.
+19/06/2024 16:41:48 : Information: 0 - Hosting environment: Development
+19/06/2024 16:41:48 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+19/06/2024 16:42:04 : Information: 0 - Application is shutting down...
+19/06/2024 16:43:10 : Information: 14 - Now listening on: http://localhost:5298
+19/06/2024 16:43:10 : Information: 0 - Application started. Press Ctrl+C to shut down.
+19/06/2024 16:43:10 : Information: 0 - Hosting environment: Development
+19/06/2024 16:43:10 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+19/06/2024 16:43:22 : Warning: 3 - Failed to determine the https port for redirect.
+19/06/2024 16:43:22 : Information: 0 - ##-/GET/-##
+19/06/2024 16:43:22 : Information: 0 - ##-/PRODUTOS/-##
+19/06/2024 16:43:22 : Information: 0 - ##-/GET/-##
+19/06/2024 16:43:23 : Information: 20101 - Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome", p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
+FROM "Categorias" AS c
+LEFT JOIN "Produtos" AS p ON c."CategoriaId" = p."CategoriaId"
+ORDER BY c."CategoriaId"
+19/06/2024 16:43:44 : Information: 20101 - Executed DbCommand (9ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+WHERE c."CategoriaId" = @__id_0
+LIMIT 1
+19/06/2024 16:44:20 : Information: 0 - Application is shutting down...

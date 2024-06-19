@@ -3,6 +3,7 @@ using APICatalogo.Context;
 using APICatalogo.Extensions;
 using APICatalogo.Filters;
 using APICatalogo.Logging;
+using APICatalogo.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,7 @@ builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExcep
 
 //Adicionando Filtro personalizado
 builder.Services.AddScoped<ApiLoggingFilter>();
+builder.Services.AddScoped<IcategoriaRepository, CategoriaRepository>();
 
 //Loggers personalizados
 builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
