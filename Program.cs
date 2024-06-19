@@ -7,14 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adicionar serviços ao contêiner
-builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+// Adicionar serviços aos Controllers
+builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExcepitionFilter)); }).AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 //Adicionando Filtro personalizado
 builder.Services.AddScoped<ApiLoggingFilter>();
 
 //Loggers personalizados
-builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration {
+builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
+{
     logLevel = LogLevel.Information
 }));
 
