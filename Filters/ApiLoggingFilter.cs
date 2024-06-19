@@ -12,12 +12,15 @@ public class ApiLoggingFilter : IActionFilter
 
     public void OnActionExecuting(ActionExecutingContext context) {
         //Execute antes da Action
-        _logger.LogInformation($"##-Executando-##");
+        _logger.LogInformation($"##-##########################-##");
+        _logger.LogInformation($"##-Executando antes da Action-##");
+        _logger.LogInformation($"##-##########################-##");
     }
 
     public void OnActionExecuted(ActionExecutedContext context) {
         //Executa depois da Action 
-        _logger.LogInformation("##- Executou -##");
-        _logger.LogInformation($"##- Status Code -##  {context.HttpContext.Response.StatusCode}");
+        _logger.LogInformation($"##-##########################-##");
+        _logger.LogInformation($"##- Executeou - Status Code -##  {context.HttpContext.Response.StatusCode}");
+        _logger.LogInformation($"##-##########################-##");
     }
 }

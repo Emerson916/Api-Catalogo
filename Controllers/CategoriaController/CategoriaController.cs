@@ -13,15 +13,18 @@ public class CategoriaController : ControllerBase
 {
     private readonly AppDbContext _context;
     private readonly IConfiguration _configuration;
+    private readonly ILogger _logger;
 
-    public CategoriaController(AppDbContext context, IConfiguration configuration)
+    public CategoriaController(AppDbContext context, IConfiguration configuration, ILogger<CategoriaController> logger)
     {
         _context = context;
         _configuration = configuration;
+        _logger = logger;
     }
 
     [HttpGet("LerConfig")]
-    public string GetConfig() {
+    public string GetConfig()
+    {
         var valor1 = _configuration["chave1"];
         var valor2 = _configuration["chave2"];
 
@@ -38,6 +41,9 @@ public class CategoriaController : ControllerBase
             return NotFound("Categorias não encontradas");
         }
 
+        _logger.LogInformation("##-/GET/-##");
+        _logger.LogInformation("##-/PRODUTOS/-##");
+        _logger.LogInformation("##-/GET/-##");
         var response = await _context.Categorias.Include(p => p.Produtos).AsNoTracking().ToListAsync();
 
         if (response is null)
@@ -59,6 +65,9 @@ public class CategoriaController : ControllerBase
                 return NotFound("Categorias não encontradas");
             }
 
+            _logger.LogInformation("##-/GET/-##");
+            _logger.LogInformation("##-/Service-Filter/-##");
+            _logger.LogInformation("##-/GET/-##");
             var response = await _context.Categorias.AsNoTracking().ToListAsync();
 
             if (response is null)
@@ -115,7 +124,7 @@ public class CategoriaController : ControllerBase
             return BadRequest();
         }
 
-         if (_context is null || _context?.Categorias is null)
+        if (_context is null || _context?.Categorias is null)
         {
             return NotFound("Categorias não encontradas");
         }

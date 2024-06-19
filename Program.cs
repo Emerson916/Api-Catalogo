@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using APICatalogo.Context;
 using APICatalogo.Extensions;
 using APICatalogo.Filters;
+using APICatalogo.Logging;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,11 @@ builder.Services.AddControllers().AddJsonOptions(options => options.JsonSerializ
 
 //Adicionando Filtro personalizado
 builder.Services.AddScoped<ApiLoggingFilter>();
+
+//Loggers personalizados
+builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration {
+    logLevel = LogLevel.Information
+}));
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
