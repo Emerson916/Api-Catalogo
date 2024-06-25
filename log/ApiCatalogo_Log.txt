@@ -146,3 +146,84 @@ LIMIT 1
 25/06/2024 12:25:14 : Information: 0 - Hosting environment: Development
 25/06/2024 12:25:14 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
 25/06/2024 12:33:57 : Information: 0 - Application is shutting down...
+25/06/2024 12:34:31 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:34:31 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:34:31 : Information: 0 - Hosting environment: Development
+25/06/2024 12:34:31 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 13:07:54 : Information: 0 - Application is shutting down...
+25/06/2024 13:08:00 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 13:08:00 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 13:08:00 : Information: 0 - Hosting environment: Development
+25/06/2024 13:08:00 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 13:08:45 : Information: 0 - Application is shutting down...
+25/06/2024 13:08:49 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 13:08:49 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 13:08:49 : Information: 0 - Hosting environment: Development
+25/06/2024 13:08:49 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 14:53:02 : Information: 0 - Application is shutting down...
+25/06/2024 15:30:06 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 15:30:06 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 15:30:06 : Information: 0 - Hosting environment: Development
+25/06/2024 15:30:06 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 15:30:51 : Warning: 3 - Failed to determine the https port for redirect.
+25/06/2024 15:30:52 : Information: 0 - ##-##########################-##
+25/06/2024 15:30:52 : Information: 0 - ##-Executando antes da Action-##
+25/06/2024 15:30:52 : Information: 0 - ##-##########################-##
+25/06/2024 15:30:53 : Information: 20101 - Executed DbCommand (16ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+25/06/2024 15:30:53 : Information: 0 - ##-##########################-##
+25/06/2024 15:30:53 : Information: 0 - ##- Executeou - Status Code -##  200
+25/06/2024 15:30:53 : Information: 0 - ##-##########################-##
+25/06/2024 15:31:10 : Information: 20101 - Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+WHERE c."CategoriaId" = @__id_0
+LIMIT 1
+25/06/2024 15:31:13 : Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+WHERE c."CategoriaId" = @__id_0
+LIMIT 1
+25/06/2024 15:31:52 : Information: 20101 - Executed DbCommand (13ms) [Parameters=[@p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Categorias" ("ImageUrl", "Nome")
+VALUES (@p0, @p1)
+RETURNING "CategoriaId";
+25/06/2024 15:32:44 : Information: 20101 - Executed DbCommand (10ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?', @p1='?'], CommandType='Text', CommandTimeout='30']
+UPDATE "Categorias" SET "ImageUrl" = @p0, "Nome" = @p1
+WHERE "CategoriaId" = @p2;
+25/06/2024 15:32:54 : Information: 20101 - Executed DbCommand (4ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+WHERE c."CategoriaId" = @__id_0
+LIMIT 1
+25/06/2024 15:32:54 : Information: 20101 - Executed DbCommand (7ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+DELETE FROM "Categorias"
+WHERE "CategoriaId" = @p0;
+25/06/2024 15:32:57 : Information: 20101 - Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+WHERE c."CategoriaId" = @__id_0
+LIMIT 1
+25/06/2024 15:47:49 : Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
+FROM "Produtos" AS p
+25/06/2024 15:53:40 : Information: 0 - Application is shutting down...
+25/06/2024 15:53:48 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 15:53:48 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 15:53:48 : Information: 0 - Hosting environment: Development
+25/06/2024 15:53:48 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 15:54:08 : Warning: 3 - Failed to determine the https port for redirect.
+25/06/2024 15:54:09 : Information: 20101 - Executed DbCommand (49ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
+FROM "Produtos" AS p
+WHERE p."ProdutoId" = @__id_0
+LIMIT 1
+25/06/2024 15:54:21 : Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
+FROM "Produtos" AS p
+25/06/2024 15:55:23 : Information: 20101 - Executed DbCommand (23ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = Single), @p4='?', @p5='?', @p6='?' (DbType = Decimal)], CommandType='Text', CommandTimeout='30']
+INSERT INTO "Produtos" ("CategoriaId", "DataCadastro", "Descricao", "Estoque", "ImageUrl", "Nome", "Preco")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
+RETURNING "ProdutoId";
+25/06/2024 16:03:04 : Information: 0 - Application is shutting down...

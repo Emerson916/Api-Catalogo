@@ -15,6 +15,7 @@ builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExcep
 builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<IcategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 //Loggers personalizados
 builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
