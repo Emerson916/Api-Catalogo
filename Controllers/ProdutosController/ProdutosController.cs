@@ -22,9 +22,9 @@ public class ProdutosController : ControllerBase
    }
 
    [HttpGet]
-   public ActionResult<IEnumerable<Produto>> GetProdutos()
+   public ActionResult<IQueryable<Produto>> GetProdutos()
    {
-      var response = _repository.GetProdutosRepository();
+      var response = _repository.GetProdutosRepository().ToList();;
 
       if (response is null)
       {
@@ -72,7 +72,12 @@ public class ProdutosController : ControllerBase
       }
 
       var response = _repository.PutProdutoRepository(id, data);
+
+      if (response)  {
       return Ok(response);
+      } else {
+         return StatusCode(500, "Falha ao atualizar o produto");
+      }
    }
 
    [HttpDelete("{id:int}")]

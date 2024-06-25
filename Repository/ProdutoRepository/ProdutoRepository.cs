@@ -13,13 +13,9 @@ public class ProdutoRepository : IProdutoRepository
         _context = context;
     }
 
-    public IEnumerable<Produto> GetProdutosRepository()
+    public IQueryable<Produto> GetProdutosRepository()
     {
-        if (_context.Produtos is null) return [];
-
-        var response = _context.Produtos.ToList();
-
-        return response;
+        return _context.Produtos;
     }
 
     public Produto GetProdutoByIdRepository(int id)
@@ -30,18 +26,27 @@ public class ProdutoRepository : IProdutoRepository
     }
     public Produto PostProdutoRepository(Produto data)
     {
+        if (data is null) {
+            throw new InvalidOperationException("Dados do produto é null");
+        }
         _context.Produtos.Add(data);
         _context.SaveChanges();
         return data;
     }
 
-    public Produto PutProdutoRepository(int id, Produto data)
+    public bool PutProdutoRepository(int id, Produto data)
     {
         if (data is null) throw new ArgumentException(nameof(data));
 
-        _context.Entry(data).State = EntityState.Modified;
+        if (_context.Produtos.Any(p => p.ProdutoId == data.ProdutoId)) {
+
+        // _context.Entry(data).State = EntityState.Modified;
+        _context.Produtos.Update(data);
         _context.SaveChanges();
-        return data;
+        return true;
+        } 
+        return false;
+        
     }
 
     public Produto DeleteProdutoRepository(int id) {
