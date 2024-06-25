@@ -71,3 +71,78 @@ FROM "Produtos" AS p
 WHERE p."ProdutoId" = @__id_0
 LIMIT 1
 20/06/2024 09:28:53 : Information: 0 - Application is shutting down...
+25/06/2024 11:24:33 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:24:33 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:24:33 : Information: 0 - Hosting environment: Development
+25/06/2024 11:24:33 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:34:23 : Information: 0 - Application is shutting down...
+25/06/2024 11:34:32 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:34:32 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:34:32 : Information: 0 - Hosting environment: Development
+25/06/2024 11:34:32 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:35:51 : Information: 0 - Application is shutting down...
+25/06/2024 11:35:57 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:35:57 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:35:57 : Information: 0 - Hosting environment: Development
+25/06/2024 11:35:57 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:37:19 : Information: 0 - Application is shutting down...
+25/06/2024 11:38:10 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:38:10 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:38:10 : Information: 0 - Hosting environment: Development
+25/06/2024 11:38:10 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:38:31 : Information: 0 - Application is shutting down...
+25/06/2024 11:38:42 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:38:42 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:38:42 : Information: 0 - Hosting environment: Development
+25/06/2024 11:38:42 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:38:56 : Information: 0 - Application is shutting down...
+25/06/2024 11:40:27 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:40:27 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:40:27 : Information: 0 - Hosting environment: Development
+25/06/2024 11:40:27 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:40:42 : Information: 0 - Application is shutting down...
+25/06/2024 11:40:46 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:40:46 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:40:46 : Information: 0 - Hosting environment: Development
+25/06/2024 11:40:46 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:41:15 : Information: 0 - Application is shutting down...
+25/06/2024 11:41:19 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 11:41:19 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 11:41:19 : Information: 0 - Hosting environment: Development
+25/06/2024 11:41:19 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 11:42:07 : Information: 0 - Application is shutting down...
+25/06/2024 12:04:13 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:04:13 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:04:13 : Information: 0 - Hosting environment: Development
+25/06/2024 12:04:13 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:04:57 : Information: 0 - Application is shutting down...
+25/06/2024 12:05:02 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:05:02 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:05:02 : Information: 0 - Hosting environment: Development
+25/06/2024 12:05:02 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:10:54 : Information: 0 - Application is shutting down...
+25/06/2024 12:11:01 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:11:01 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:11:01 : Information: 0 - Hosting environment: Development
+25/06/2024 12:11:01 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:12:18 : Information: 0 - Application is shutting down...
+25/06/2024 12:12:28 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:12:28 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:12:28 : Information: 0 - Hosting environment: Development
+25/06/2024 12:12:28 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:21:34 : Information: 0 - Application is shutting down...
+25/06/2024 12:21:47 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:21:47 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:21:47 : Information: 0 - Hosting environment: Development
+25/06/2024 12:21:47 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:23:09 : Information: 0 - Application is shutting down...
+25/06/2024 12:23:15 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:23:15 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:23:15 : Information: 0 - Hosting environment: Development
+25/06/2024 12:23:15 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:25:08 : Information: 0 - Application is shutting down...
+25/06/2024 12:25:14 : Information: 14 - Now listening on: http://localhost:5298
+25/06/2024 12:25:14 : Information: 0 - Application started. Press Ctrl+C to shut down.
+25/06/2024 12:25:14 : Information: 0 - Hosting environment: Development
+25/06/2024 12:25:14 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+25/06/2024 12:33:57 : Information: 0 - Application is shutting down...
