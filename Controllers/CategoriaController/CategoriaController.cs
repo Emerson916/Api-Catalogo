@@ -150,6 +150,10 @@ public class CategoriaController : ControllerBase
         var response = _uof.CategoriaRepository.Update(categoria);
         _uof.Commit();
 
+        if (response is null)  {
+            return NotFound("Categoria não atualizada...");
+        }
+
         var categoriaDTO = new CategoriaDTO()
         {
             CategoriaId = response.CategoriaId,
@@ -172,6 +176,11 @@ public class CategoriaController : ControllerBase
 
         var response = _uof.CategoriaRepository.Delete(categoria);
         _uof.Commit();
+
+        
+        if (response is null)  {
+            return NotFound("Categoria não excluida...");
+        }
 
         var categoriaDTO = new CategoriaDTO()
         {

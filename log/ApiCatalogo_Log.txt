@@ -258,3 +258,18 @@ FROM "Produtos" AS p
 SELECT p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
 FROM "Produtos" AS p
 26/06/2024 14:36:26 : Information: 0 - Application is shutting down...
+26/06/2024 16:09:01 : Information: 14 - Now listening on: http://localhost:5298
+26/06/2024 16:09:01 : Information: 0 - Application started. Press Ctrl+C to shut down.
+26/06/2024 16:09:01 : Information: 0 - Hosting environment: Development
+26/06/2024 16:09:01 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+26/06/2024 16:09:45 : Information: 0 - Application is shutting down...
+26/06/2024 16:09:50 : Information: 14 - Now listening on: http://localhost:5298
+26/06/2024 16:09:50 : Information: 0 - Application started. Press Ctrl+C to shut down.
+26/06/2024 16:09:50 : Information: 0 - Hosting environment: Development
+26/06/2024 16:09:50 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+26/06/2024 16:11:00 : Information: 0 - Application is shutting down...
+26/06/2024 16:11:07 : Information: 14 - Now listening on: http://localhost:5298
+26/06/2024 16:11:07 : Information: 0 - Application started. Press Ctrl+C to shut down.
+26/06/2024 16:11:07 : Information: 0 - Hosting environment: Development
+26/06/2024 16:11:07 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+26/06/2024 16:14:17 : Information: 0 - Application is shutting down...
