@@ -10,25 +10,21 @@ public class ProdutosController : ControllerBase
 {
     //variavel privada que só pode ser lida
     //private/public - definindo que só pode ser lida - tipagem da variavel - nome (Variaveis privadas no C# são iniciadas com '_')
-    private readonly IProdutoRepository _produtoRepository;
-    private readonly IRepository<Produto> _repository;
+    private readonly IUnitOfWork _uof;
     private readonly ILogger _logger;
 
     //Construtor
-    public ProdutosController(IProdutoRepository produtoRepository, IRepository<Produto> repository, ILogger<ProdutosController> logger)
+    public ProdutosController(IUnitOfWork uof, ILogger<ProdutosController> logger)
     {
-        _produtoRepository = produtoRepository;
-        _repository = repository;
+        _uof = uof;
         _logger = logger;
     }
 
     [HttpGet("categorias/{id}")]
     public ActionResult<IEnumerable<Produto>> GetProdutosCategoria(int id)
     {
-          if (_produtoRepository == null) {
-            return StatusCode(500, "Falha ao atualizar o produto");
-        }
-        var produtos = _produtoRepository.GetProdutosPorCategoriaRepository(id);
+       
+        var produtos = _uof.ProdutoRepository.GetProdutosPorCategoriaRepository(id);
 
         if (produtos is null)
         {
@@ -41,7 +37,7 @@ public class ProdutosController : ControllerBase
     [HttpGet]
     public ActionResult<IQueryable<Produto>> GetProdutos()
     {
-        var response = _repository.GetAll();
+        var response = _uof.ProdutoRepository.GetAll();
 
         if (response is null)
         {
@@ -56,7 +52,7 @@ public class ProdutosController : ControllerBase
     // public async Task<ActionResult<Produto>> GetProdutoById(int id , [BindRequired] string nome)
     public ActionResult<Produto> GetProdutoById(int id)
     {
-        var response = _repository.Get(c => c.ProdutoId == id);
+        var response = _uof.ProdutoRepository.Get(c => c.ProdutoId == id);
 
         if (response is null)
         {
@@ -74,7 +70,7 @@ public class ProdutosController : ControllerBase
             return BadRequest();
         }
 
-        var response = _repository.Create(data);
+        var response = _uof.ProdutoRepository.Create(data);
 
          if (response is null)
         {
@@ -93,16 +89,13 @@ public class ProdutosController : ControllerBase
             return BadRequest();
         }
 
-        if (_repository == null) {
-            return StatusCode(500, "Falha ao atualizar o produto");
-        }
-
-        var response = _repository.Update(data);
+        var response = _uof.ProdutoRepository.Update(data);
 
         if (response is null) {
             return StatusCode(500, "Falha ao atualizar o produto");
         }
 
+        _uof.Commit();
       return Ok(response);
         
     }
@@ -110,14 +103,15 @@ public class ProdutosController : ControllerBase
     [HttpDelete("{id:int}")]
     public ActionResult DeleteProduto(int id)
     {
-        var produto = _repository.Get(p => p.ProdutoId == id);
+        var produto = _uof.ProdutoRepository.Get(p => p.ProdutoId == id);
 
         if (produto is null)
         {
             return NotFound("Produto não encontrado..");
         }
 
-        var response = _repository.Delete(produto);
+        var response = _uof.ProdutoRepository.Delete(produto);
+        _uof.Commit();
         return Ok(response);
     }
 }

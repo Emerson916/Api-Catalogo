@@ -227,3 +227,34 @@ INSERT INTO "Produtos" ("CategoriaId", "DataCadastro", "Descricao", "Estoque", "
 VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6)
 RETURNING "ProdutoId";
 25/06/2024 16:03:04 : Information: 0 - Application is shutting down...
+26/06/2024 14:04:17 : Information: 14 - Now listening on: http://localhost:5298
+26/06/2024 14:04:17 : Information: 0 - Application started. Press Ctrl+C to shut down.
+26/06/2024 14:04:17 : Information: 0 - Hosting environment: Development
+26/06/2024 14:04:17 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+26/06/2024 14:20:10 : Information: 0 - Application is shutting down...
+26/06/2024 14:20:20 : Information: 14 - Now listening on: http://localhost:5298
+26/06/2024 14:20:20 : Information: 0 - Application started. Press Ctrl+C to shut down.
+26/06/2024 14:20:20 : Information: 0 - Hosting environment: Development
+26/06/2024 14:20:20 : Information: 0 - Content root path: C:\Users\estagiario\Projetos\pessoal\APICatalogo
+26/06/2024 14:20:32 : Warning: 3 - Failed to determine the https port for redirect.
+26/06/2024 14:20:32 : Information: 0 - ##-##########################-##
+26/06/2024 14:20:32 : Information: 0 - ##-Executando antes da Action-##
+26/06/2024 14:20:32 : Information: 0 - ##-##########################-##
+26/06/2024 14:20:33 : Information: 20101 - Executed DbCommand (14ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+26/06/2024 14:20:33 : Information: 0 - ##-##########################-##
+26/06/2024 14:20:33 : Information: 0 - ##- Executeou - Status Code -##  200
+26/06/2024 14:20:33 : Information: 0 - ##-##########################-##
+26/06/2024 14:20:42 : Information: 20101 - Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+SELECT c."CategoriaId", c."ImageUrl", c."Nome"
+FROM "Categorias" AS c
+WHERE c."CategoriaId" = @__id_0
+LIMIT 1
+26/06/2024 14:20:51 : Information: 20101 - Executed DbCommand (3ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
+FROM "Produtos" AS p
+26/06/2024 14:20:57 : Information: 20101 - Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+SELECT p."ProdutoId", p."CategoriaId", p."DataCadastro", p."Descricao", p."Estoque", p."ImageUrl", p."Nome", p."Preco"
+FROM "Produtos" AS p
+26/06/2024 14:36:26 : Information: 0 - Application is shutting down...

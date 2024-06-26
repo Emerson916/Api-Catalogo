@@ -12,12 +12,12 @@ namespace APICatalogo.Controllers.CategoriaController;
 
 public class CategoriaController : ControllerBase
 {
-    private readonly IRepository<Categoria> _repository;
+    private readonly IUnitOfWork _uof;
     private readonly ILogger _logger;
 
-    public CategoriaController(IcategoriaRepository repository, ILogger<CategoriaController> logger)
+    public CategoriaController(IUnitOfWork uof, ILogger<CategoriaController> logger)
     {
-        _repository = repository;
+        _uof = uof;
         _logger = logger;
     }
 
@@ -54,7 +54,7 @@ public class CategoriaController : ControllerBase
     {
 
         // var response = _repository.GetCategoriasRepository();
-        var response = _repository.GetAll();
+        var response = _uof.CategoriaRepository.GetAll();
 
         if (response is null)
         {
@@ -68,7 +68,7 @@ public class CategoriaController : ControllerBase
     [HttpGet("{id:int}", Name = "ObterCategoria")]
     public ActionResult<Categoria> GetCategoriaById(int id)
     {
-        var response = _repository.Get(c => c.CategoriaId == id);
+        var response = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
 
         if (response is null)
         {
@@ -87,11 +87,8 @@ public class CategoriaController : ControllerBase
             return BadRequest();
         }
 
-        if (_repository == null)  {
-            return StatusCode(500, "Falha ao atualizar o produto");
-        }
-
-        var response = _repository.Create(data);
+        var response = _uof.CategoriaRepository.Create(data);
+        _uof.Commit();
 
          if (response is null)
         {
@@ -110,7 +107,8 @@ public class CategoriaController : ControllerBase
             return BadRequest();
         }
 
-        var response = _repository.Update(data);
+        var response = _uof.CategoriaRepository.Update(data);
+        _uof.Commit();
 
         return Ok(response);
     }
@@ -118,15 +116,16 @@ public class CategoriaController : ControllerBase
     [HttpDelete("{id:int}")]
     public ActionResult DeleteCategoria(int id)
     {
-        var categoria = _repository.Get(c => c.CategoriaId == id);
+        var categoria = _uof.CategoriaRepository.Get(c => c.CategoriaId == id);
 
         if (categoria is null)
         {
             return NotFound("Categoria não encontrado...");
         }
 
-        var response = _repository.Delete(categoria);
-
+        var response = _uof.CategoriaRepository.Delete(categoria);
+        _uof.Commit();
+        
         return Ok(response);
     }
 

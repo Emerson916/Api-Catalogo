@@ -16,6 +16,7 @@ builder.Services.AddScoped<ApiLoggingFilter>();
 builder.Services.AddScoped<IcategoriaRepository, CategoriaRepository>();
 builder.Services.AddScoped<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 //Loggers personalizados
 builder.Logging.AddProvider(new CustomLoggerProvider(new CustomLoggerProviderConfiguration
