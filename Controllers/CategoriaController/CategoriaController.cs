@@ -1,5 +1,6 @@
 using APICatalogo.Context;
 using APICatalogo.DTOs;
+using APICatalogo.DTOs.Mappings;
 using APICatalogo.Filters;
 using APICatalogo.Models;
 using APICatalogo.Repository;
@@ -61,16 +62,18 @@ public class CategoriaController : ControllerBase
             return NotFound("Categorias não encontradas");
         }
 
-        var categoriasDTO = new List<CategoriaDTO>();
+        // var categoriasDTO = new List<CategoriaDTO>();
 
-        foreach(var categoria in response){
-            var categoriaDTO = new CategoriaDTO{
-                CategoriaId = categoria.CategoriaId,
-                Nome = categoria.Nome,
-                ImageUrl = categoria.ImageUrl
-            };
-            categoriasDTO.Add(categoriaDTO);
-        }
+        // foreach(var categoria in response){
+        //     var categoriaDTO = new CategoriaDTO{
+        //         CategoriaId = categoria.CategoriaId,
+        //         Nome = categoria.Nome,
+        //         ImageUrl = categoria.ImageUrl
+        //     };
+        //     categoriasDTO.Add(categoriaDTO);
+        // }
+
+        var categoriasDTO = response.ToCategoriaDTOList();
 
         return Ok(categoriasDTO);
 
@@ -105,12 +108,20 @@ public class CategoriaController : ControllerBase
             return BadRequest();
         }
 
-        var categoria = new Categoria()
+        // var categoria = new Categoria()
+        // {
+        //     CategoriaId = data.CategoriaId,
+        //     Nome = data.Nome,
+        //     ImageUrl = data.ImageUrl
+        // };
+
+        var categoria = data.ToCategoria();
+
+        if (categoria is null)
         {
-            CategoriaId = data.CategoriaId,
-            Nome = data.Nome,
-            ImageUrl = data.ImageUrl
-        };
+            _logger.LogWarning($"Dados inválidos...");
+            return BadRequest();
+        }
 
         var response = _uof.CategoriaRepository.Create(categoria);
         _uof.Commit();
@@ -120,12 +131,20 @@ public class CategoriaController : ControllerBase
             return NotFound("Categoria não criada...");
         }
 
-        var categoriaDTO = new CategoriaDTO()
+        // var categoriaDTO = new CategoriaDTO()
+        // {
+        //     CategoriaId = categoria.CategoriaId,
+        //     Nome = categoria.Nome,
+        //     ImageUrl = categoria.ImageUrl
+        // };
+
+        var categoriaDTO = response.ToCategoriaDTO();
+
+        if (categoriaDTO is null)
         {
-            CategoriaId = categoria.CategoriaId,
-            Nome = categoria.Nome,
-            ImageUrl = categoria.ImageUrl
-        };
+            _logger.LogWarning($"Dados inválidos...");
+            return BadRequest();
+        }
 
         return new CreatedAtRouteResult("ObterCategoria", new { id = categoriaDTO.CategoriaId }, categoriaDTO);
     }
@@ -140,26 +159,37 @@ public class CategoriaController : ControllerBase
         }
 
 
-        var categoria = new Categoria()
+        // var categoria = new Categoria()
+        // {
+        //     CategoriaId = data.CategoriaId,
+        //     Nome = data.Nome,
+        //     ImageUrl = data.ImageUrl
+        // };
+
+        var categoria = data.ToCategoria();
+
+        if (categoria is null)
         {
-            CategoriaId = data.CategoriaId,
-            Nome = data.Nome,
-            ImageUrl = data.ImageUrl
-        };
+            _logger.LogWarning($"Dados inválidos...");
+            return BadRequest();
+        }
 
         var response = _uof.CategoriaRepository.Update(categoria);
         _uof.Commit();
 
-        if (response is null)  {
+        if (response is null)
+        {
             return NotFound("Categoria não atualizada...");
         }
 
-        var categoriaDTO = new CategoriaDTO()
-        {
-            CategoriaId = response.CategoriaId,
-            Nome = response.Nome,
-            ImageUrl = response.ImageUrl
-        };
+        // var categoriaDTO = new CategoriaDTO()
+        // {
+        //     CategoriaId = response.CategoriaId,
+        //     Nome = response.Nome,
+        //     ImageUrl = response.ImageUrl
+        // };
+
+        var categoriaDTO = response.ToCategoriaDTO();
 
         return Ok(categoriaDTO);
     }
@@ -177,17 +207,20 @@ public class CategoriaController : ControllerBase
         var response = _uof.CategoriaRepository.Delete(categoria);
         _uof.Commit();
 
-        
-        if (response is null)  {
+
+        if (response is null)
+        {
             return NotFound("Categoria não excluida...");
         }
 
-        var categoriaDTO = new CategoriaDTO()
-        {
-            CategoriaId = response.CategoriaId,
-            Nome = response.Nome,
-            ImageUrl = response.ImageUrl
-        };
+        // var categoriaDTO = new CategoriaDTO()
+        // {
+        //     CategoriaId = response.CategoriaId,
+        //     Nome = response.Nome,
+        //     ImageUrl = response.ImageUrl
+        // };
+
+        var categoriaDTO = response.ToCategoriaDTO();
 
         return Ok(categoriaDTO);
     }
