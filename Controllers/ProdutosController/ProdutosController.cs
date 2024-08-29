@@ -1,3 +1,4 @@
+using APICatalogo.DTOs;
 using APICatalogo.Models;
 using APICatalogo.Repository;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +22,7 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet("categorias/{id}")]
-    public ActionResult<IEnumerable<Produto>> GetProdutosCategoria(int id)
+    public ActionResult<IEnumerable<ProdutoDTO>> GetProdutosCategoria(int id)
     {
        
         var produtos = _uof.ProdutoRepository.GetProdutosPorCategoriaRepository(id);
@@ -35,7 +36,7 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpGet]
-    public ActionResult<IQueryable<Produto>> GetProdutos()
+    public ActionResult<IQueryable<ProdutoDTO>> GetProdutos()
     {
         var response = _uof.ProdutoRepository.GetAll();
 
@@ -50,7 +51,7 @@ public class ProdutosController : ControllerBase
     [HttpGet("{id:int}", Name = "ObterProduto")]
     // Definindo um parametro obrigatório
     // public async Task<ActionResult<Produto>> GetProdutoById(int id , [BindRequired] string nome)
-    public ActionResult<Produto> GetProdutoById(int id)
+    public ActionResult<ProdutoDTO> GetProdutoById(int id)
     {
         var response = _uof.ProdutoRepository.Get(c => c.ProdutoId == id);
 
@@ -63,7 +64,7 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult PostProduto(Produto data)
+    public ActionResult<ProdutoDTO> PostProduto(ProdutoDTO data)
     {
         if (data is null)
         {
@@ -81,7 +82,7 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public ActionResult PutProduto(int id, Produto data)
+    public ActionResult<ProdutoDTO> PutProduto(int id, ProdutoDTO data)
     {
         if (id != data.ProdutoId)
         {
@@ -101,7 +102,7 @@ public class ProdutosController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public ActionResult DeleteProduto(int id)
+    public ActionResult<ProdutoDTO> DeleteProduto(int id)
     {
         var produto = _uof.ProdutoRepository.Get(p => p.ProdutoId == id);
 
