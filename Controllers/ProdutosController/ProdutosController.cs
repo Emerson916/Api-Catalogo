@@ -1,6 +1,7 @@
 using APICatalogo.DTOs;
 using APICatalogo.Models;
 using APICatalogo.Repository;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APICatalogo.Controllers.ProdutosController;
@@ -12,19 +13,21 @@ public class ProdutosController : ControllerBase
     //variavel privada que só pode ser lida
     //private/public - definindo que só pode ser lida - tipagem da variavel - nome (Variaveis privadas no C# são iniciadas com '_')
     private readonly IUnitOfWork _uof;
+    private readonly IMapper _mapper;
     private readonly ILogger _logger;
 
     //Construtor
-    public ProdutosController(IUnitOfWork uof, ILogger<ProdutosController> logger)
+    public ProdutosController(IUnitOfWork uof, IMapper mapper, ILogger<ProdutosController> logger)
     {
         _uof = uof;
+        _mapper = mapper;
         _logger = logger;
     }
 
     [HttpGet("categorias/{id}")]
     public ActionResult<IEnumerable<ProdutoDTO>> GetProdutosCategoria(int id)
     {
-       
+
         var produtos = _uof.ProdutoRepository.GetProdutosPorCategoriaRepository(id);
 
         if (produtos is null)
@@ -32,7 +35,9 @@ public class ProdutosController : ControllerBase
             return NotFound();
         }
 
-        return Ok(produtos);    
+        var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(produtos);
+
+        return Ok(produtosDTO);
     }
 
     [HttpGet]
@@ -45,7 +50,9 @@ public class ProdutosController : ControllerBase
             return NotFound("Produtos não encontrados");
         }
 
-        return Ok(response);
+        var produtosDTO = _mapper.Map<IEnumerable<ProdutoDTO>>(response);
+
+        return Ok(produtosDTO);
     }
 
     [HttpGet("{id:int}", Name = "ObterProduto")]
@@ -60,7 +67,9 @@ public class ProdutosController : ControllerBase
             return NotFound("Produto não encontrado");
         }
 
-        return Ok(response);
+        var produtosDTO = _mapper.Map<ProdutoDTO>(response);
+
+        return Ok(produtosDTO);
     }
 
     [HttpPost]
@@ -71,13 +80,16 @@ public class ProdutosController : ControllerBase
             return BadRequest();
         }
 
-        var response = _uof.ProdutoRepository.Create(data);
+        var produto = _mapper.Map<Produto>(data);
 
-         if (response is null)
+        var response = _uof.ProdutoRepository.Create(produto);
+
+        if (response is null)
         {
             return NotFound("Produto não criado...");
         }
 
+        _uof.Commit();
         return new CreatedAtRouteResult("ObterProduto", new { id = response.ProdutoId }, response);
     }
 
@@ -90,15 +102,21 @@ public class ProdutosController : ControllerBase
             return BadRequest();
         }
 
-        var response = _uof.ProdutoRepository.Update(data);
+        var produto = _mapper.Map<Produto>(data);
 
-        if (response is null) {
+        var response = _uof.ProdutoRepository.Update(produto);
+
+        if (response is null)
+        {
             return StatusCode(500, "Falha ao atualizar o produto");
         }
 
         _uof.Commit();
-      return Ok(response);
-        
+
+        var produtoDTO = _mapper.Map<ProdutoDTO>(response);
+
+        return Ok(produtoDTO);
+
     }
 
     [HttpDelete("{id:int}")]
