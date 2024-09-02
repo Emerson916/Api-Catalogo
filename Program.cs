@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Adicionar serviços aos Controllers
-builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExcepitionFilter)); }).AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllers(options => { options.Filters.Add(typeof(ApiExcepitionFilter)); }).AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles).AddNewtonsoftJson();
 
 //Adicionando Filtro personalizado
 builder.Services.AddScoped<ApiLoggingFilter>();

@@ -2,6 +2,7 @@ using APICatalogo.DTOs;
 using APICatalogo.Models;
 using APICatalogo.Repository;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace APICatalogo.Controllers.ProdutosController;
@@ -91,6 +92,51 @@ public class ProdutosController : ControllerBase
 
         _uof.Commit();
         return new CreatedAtRouteResult("ObterProduto", new { id = response.ProdutoId }, response);
+    }
+
+    /// <summary>
+    /// Utilize esse body para fazer as alterações nas requisições: 
+    /// [
+    ///     { "op": "replace", "path": "/estoque", "value": 100 },
+    ///     { "op": "replace", "path": "/datacadastro", "value": "2025-09-03T00:00:00Z" }
+    /// ]
+    /// </summary>
+    [HttpPatch("{id:int}")]
+    public ActionResult<ProdutoDTOUpdateResponse> Patch(int id, [FromBody] JsonPatchDocument<ProdutoDTOUpdateRequest> patchProdutoDTO)
+    {
+        if (patchProdutoDTO is null || id <= 0)
+        {
+            return BadRequest();
+        }
+
+        var produto = _uof.ProdutoRepository.Get(c => c.ProdutoId == id);
+
+        if (produto is null)
+        {
+            return NotFound();
+        }
+
+        var produtoUpdateRequest = _mapper.Map<ProdutoDTOUpdateRequest>(produto);
+
+        patchProdutoDTO.ApplyTo(produtoUpdateRequest, ModelState);
+
+        if (!ModelState.IsValid)
+        {
+            Console.WriteLine("ModelState is invalid.");
+            return BadRequest(ModelState);
+        }
+
+        if (!TryValidateModel(produtoUpdateRequest))
+        {
+            Console.WriteLine("TryValidateModel failed.");
+            return BadRequest(ModelState);
+        }
+
+        _mapper.Map(produtoUpdateRequest, produto);
+        _uof.ProdutoRepository.Update(produto);
+        _uof.Commit();
+
+        return Ok(_mapper.Map<ProdutoDTOUpdateResponse>(produto));
     }
 
     [HttpPut("{id:int}")]
